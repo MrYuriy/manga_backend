@@ -8,8 +8,9 @@ def get_image_urls_list(url_chapter) -> list:
     soup = BeautifulSoup(page.text, "html.parser")
     image_list = soup.find_all("a")
     image_urls_list = [
-        link.get("href") for link in image_list if ".jpg" in link.get("href")
+        link['href'] for link in image_list if ".jpg" in str(link)
     ]
+    print(image_urls_list)
     image_urls_list = sorted(
         image_urls_list, key=lambda x: int(x.split("/")[-1].replace(".jpg", ""))
     )
@@ -19,7 +20,7 @@ def get_image_urls_list(url_chapter) -> list:
         image_urls_list = sorted(
             image_urls_list, key=lambda x: int(x.split("/")[-1].replace(".jpg", ""))
         )
-    return image_list
+    return image_urls_list
 
 
 def get_chapters_info_list(
@@ -35,9 +36,13 @@ def get_chapters_info_list(
     for li in chapters_list_urls[1:]:
         try:
             urls_list = get_image_urls_list(li.a["href"])
+            print(li.a.text, urls_list, li.a["href"])
+            print("________________________________________________________________")
             if urls_list and li.a.text not in availeble_chapters:
                 result_list.append((li.a.text, urls_list))
         except Exception as a:
-            print(a, print(li.a.text))
+            print(a)
 
     return result_list
+
+# get_image_urls_list("https://w9.sololeveling-manwha.com/manga/solo-leveling-chapter-0")
