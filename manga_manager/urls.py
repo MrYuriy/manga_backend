@@ -1,6 +1,12 @@
-from django.urls import path
-from .views import ChapterListView
+from django.urls import path, include
+from .views import ChapterViewSet
+from rest_framework import routers
 
+
+
+router = routers.DefaultRouter()
+router.register("chapters", ChapterViewSet)
 urlpatterns = [
-    path("chapters/", ChapterListView.as_view(), name="chapter-list"),
+    path("", include(router.urls))
 ]
+app_name = "manga_menager"
