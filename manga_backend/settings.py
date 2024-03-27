@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-)n%5^j%zju(-4r%sv29oh!)&1e1-8^ko5i0!5k5(63wgw8^)0k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["manga-backend-56p2.onrender.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["manga-backend-56p2.onrender.com", "127.0.0.1", "manga-backend-syfh.onrender.com"]
 
 
 # Application definition
